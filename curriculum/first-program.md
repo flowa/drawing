@@ -46,33 +46,33 @@ seuraavat asiat:
 Käytämme kirjastoa nimeltä [Quil](https://github.com/quil/quil). Quil:iä voi käyttää
 piirtämiseen.
 
-Now let's go ahead and actually run the Quil sketch. Open up Nightcode
-and Import - find the drawing folder and click. Open the file `src/drawing/core.clj`
+Piirretäänpä jotain ruudulle. Avaa Nightcode.
+Klikkaa Import -> etsi hakemisto "drawing" ja klikkaa sitä. Avaa tiedosto `src/drawing/core.clj`
 
-On the bottom of the right side:
+Alaoikealla:
 
-1. click Run with REPL
-2. click Reload File
+1. klikkaa Run with REPL
+2. klikkaa Reload File
 
-Run with REPL may take a while to startup. Once you see the prompt, `user=>`, on the bottom window, you can click Reload.
+Ensimmäinen vaihe voi kestää hetken. Kun näet kehotteen, `user=>`, alhaalla, klikkaa "Reload File":ä.
 
-A window will pop up and a circle bouncing, hitting walls within.
+Näet ikkunan jonka sisällä kimpoilee ympyrä.
 
-You may close the pop up-ed window by clicking a close (X) icon on the top left.
+Voit sulkea ikkunen vasemmalla ylhäällä olevasta (X) painikkeesta.
 
 
-## Modify Project
+## Muokkaa projektia
 
-Let's create another Quil sketch. In Nightcode, select drawing on the left side of
-directory tree. click New File on the top of right side window.
+Luodaan toinen Quil luonnos. Valitse Nightcodessa drawing-projekti vasemmalta hakemistopuusta. Klikkaa "New File":ä
+ylhäältä ikkunan oikealta puolelta.
 
 
 ![Create a new file](images/create-new-file.png)
 
-Enter `lines.clj` as the name.
+Anna tiedoston nimeksi `lines.clj`.
 
 
-## Organization
+## Organisointi
 
 As your programs get more complex, you'll need to organize them. You
 organize your Clojure code by placing related functions and data in
