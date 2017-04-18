@@ -1,27 +1,27 @@
-Making Your First Program with Quil
+Ensimmäinen Quil ohjelma
 ===================================
 
-Now that you know a bit about how to write Clojure code, let's look at
-how to create a standalone application.
+Nyt tiedät hieman siitä, millaista Clojure ohjelmointi on. Katsotaanpa kuinka
+tehdään itsenäinen applikaatio.
 
-In order to do that, you'll first create a *project*. You'll learn how
-to organize your project with *namespaces*. You'll also learn how to
-specify your project's *dependencies*. Finally, you'll learn how to
-*build* your project to create the standalone application.
+Ensimmäiseksi on tehtävä *projekti*. Opit organisoimaan projektiasi
+*nimiavaruuksien* (namespace) avulla. Opit myös lisäämään projektiisi
+*riippuvuuksia*. Lopuksi opit *kääntämään* applikaatiosi.
 
-## Create a Project
+## Luo projekti
 
-Up until now you've been experimenting in a REPL. Unfortunately, all
-the work you do in a REPL is lost when you close the REPL. You can
-think of a project as a permanent home for your code. You'll be using
-a tool called "Leiningen" to help you create and manage your
-project. To create a new project, run this command:
+Tähän asti olet lähinnä käyttänyt REPL:iä. Valitettavasti kaikki tekemäsi
+työ häviää REPL:n sulkeuduttua. Projektin voi ajatella koodisi pysyvänä
+kotina. Tulet käyttämään työkalua nimeltä "Leiningen" projektisi luomiseen
+ja hallintaan.
+
+Luodaksesi uuden projektin, aja seuraava komento:
 
 ```clojure
 lein new quil drawing
 ```
 
-This should create a directory structure that looks like this:
+Tämä luo seuraavanlaisen hakemistorakenteen:
 
 ```
 drawing
@@ -32,21 +32,19 @@ drawing
     └── drawing
         └── core.clj
 ```
+Tässä ei ole mitään ihmeellistä, saati erityisen Clojuremaista.
+Kyseessä on Leiningenin konventio, tapa tehdä asioita. Käytät
+Leiningeniä ohjelman kääntämiseen ja ajamiseen, ja Leiningen olettaa
+applikaatiosi seuraavan tätä rakennetta. Hakemistot sisältävät
+seuraavat asiat:
 
-There's nothing inherently special or Clojure-y about this project
-skeleton. It's just a convention used by Leiningen. You'll be using
-Leiningen to build and run Clojure apps, and Leiningen expects your
-app to be laid out this way. Here's the function of each part of the
-skeleton:
+- `project.clj` sisältää asetuksia Leiningeniä varten. Asetukset auttavat
+   Leiningeniä tietämään mitä riippuvuuksia sen pitää hakea, ja mikä funktio
+   pitää suorittaa ohjelmaa ajettaessa.
+- `src/drawing/core.clj` sisältää varsinaisen clojure-koodin.
 
-- `project.clj` is a configuration file for Leiningen. It helps
-  Leiningen answer questions like, "What dependencies does this
-  project have?" and "When this Clojure program runs, what function
-  should get executed first?"
-- `src/drawing/core.clj` is where the Clojure code goes
-
-This uses a Clojure library, [Quil](https://github.com/quil/quil), that creates drawings called
-sketches.
+Käytämme kirjastoa nimeltä [Quil](https://github.com/quil/quil). Quil:iä voi käyttää
+piirtämiseen.
 
 Now let's go ahead and actually run the Quil sketch. Open up Nightcode
 and Import - find the drawing folder and click. Open the file `src/drawing/core.clj`
