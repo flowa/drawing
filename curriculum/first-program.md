@@ -133,13 +133,13 @@ Muista jälleen tallentaa tiedosto painamalla Save-painiketta ylä menusta.
 
 ## Ensimmäinen ohjelmasi
 
-### Drawing with Quil
+### Piirtäminen Quil:n avulla
 
-Quil is a Clojure library that provides the powers of [Processing](https://processing.org/), a
-tool that allows you to create drawings and animations. We will use
-the functions of Quil to create some of our own drawings.
+Quil on Clojure kirjasto joka mahdollistaa [Processing](https://processing.org/) työkalun
+käyttämisen. Processing on työkalu, joka mahdollistaa piirtämisen ja animaatioiden tekemisen.
+Käytämme Quil-kirjaston funktioita omissa piirroksissamme.
 
-We will define our own functions, like so...
+Määritämme funktiomme näin:
 
 ```clojure
 (defn draw []
@@ -147,30 +147,27 @@ We will define our own functions, like so...
    )
 ```
 
-... that call functions that Quil provides, like so...
+... ja kutsumme quil:n funktiota näin:
 
 ```clojure
    ; Call the quil background function
    (q/background 240)
 ```
 
-Put it together:
+Kaikki yhdessä:
 ```clojure
 (defn draw []
    ; Call the quil background function
    (q/background 240)
    )
 ```
-
-In order to create a drawing (or sketch in Quil lingo) with Quil, you
-have to define the `setup`, `draw`, and `sketch` functions. `setup` is
-where you set the stage for your drawing. `draw` happens repeatedly,
-so that is where the action of your drawing happens. `sketch` is the
-stage itself. Let's define these functions together, and you will see
-what they do.
-
-In Nightcode, in the lines.clj file, add the following after the
-closing parenthesis of the ns statement from before.
+Jotta voimme piirtää Quil:lla, tai tehdä luonnoksen (sketch) kuten Quil piirroksia kutsuu,
+meidän täytyy määrittää `setup`, `draw`, ja `sketch` funktiot.
+ `setup` funktio määrittää piirroksen asetukset. `draw` tapahtuu toistuvasti, joten
+ sinne määritellään kaikki mitä piirroksessa tapahtuu. `sketch` on varsinainen luonnos.
+ Määritellään nämä, niin näet mitä tapahtuu.
+ 
+ Avaa Nightcodessa lines.clj tiedosto, ja lisää seuraava ns-määreen viimeisen sulun jälkeen:
 
 ```clojure
 (defn setup []
@@ -181,23 +178,19 @@ closing parenthesis of the ns statement from before.
 
   (q/stroke 255 0 0))
 ```
+Tämä on setup funktio joka määrittää asetuksia piirrokselle. Kutsumme ensin
+quil:n `frame-rate` funktiota arvolla 30, joka aiheuttaa sen, että piirros päivittyy
+30 kertaa sekunnissa. `q/`-osa funktiokutsussa kertoo funktion löytyvän quil:n nimiavaruudesta.
+Voit katsoa ns-määrettä tiedoston alussa. Quil kirjaston alias on määritetty `:as q` kohdassa,
+joten voimme käyttää q:ta quil-nimiavaruuden lyhenteenä. Kirjastojen funktioita kutsutaan
+muodolla `kirjaston-nimi/funktion-nimi`, eli tässä tapauksessa `q/frame-rate`.
 
-This is the `setup` function that sets the stage for the
-drawing. First, we call quil's `frame-rate` function to say that the
-drawing should be redrawn 30 times per second. We put `q/` in front to
-say that this is `frame-rate` from quil. Look up at the ns
-statement. Since it says `:as q`, we can use q as a short hand for
-quil, and `library-name/function-name` is the way you call a function
-from a library.
+Sitten asetamme päälle RGB tilan.
 
-Second, we set the color mode to RGB.
+Viimeiseksi asetamme piirrosvärin `stroke`-funktiolla. koodi 255 0 0 tarkoittaa punaista.
+Voita katsella [muita mahdollisia värejä täältä](http://xona.com/colorlist/)
 
-Third, we set the color of the lines we will draw with `stroke`. The
-code 255 0 0 represents red. You can [look up RGB codes](http://xona.com/colorlist/) for other
-colors if you would like to try something else.
-
-In Nightcode, in the lines.clj file, add the following after the
-closing parenthesis of the setup function.
+Nightcodessa lines.clj tiedostossa, lisää seuraava setup-funktion viimeisen sulkeen jälkeen:
 
 ```clojure
 (defn draw []
@@ -211,15 +204,15 @@ closing parenthesis of the setup function.
   (q/line 200 200 (q/mouse-x) (q/mouse-y)))
 ```
 
-Here we call the quil `line` function four times. We also call two
-functions repeatedly as the arguments to the `line` function:
-`mouse-x` and `mouse-y`. These get the current position (x and y
-coordinates on a 2d plane) of the mouse. The `line` function takes
-four arguments - two sets of x, y coordinates. The first x and y are
-the starting position of the line. The second x and y are the ending
-position of the line. So we start each of these lines at a fixed
-position, then end them wherever the mouse is when the sketch is
-drawn.
+Kutsumme quil:n `line` funktiota neljä kertaa. Kutsumme myös kahta
+muuta funktiota: `mouse-x` ja `mouse-y`. Funktiot palauttavat hiiren
+osoittimen x ja y koordinaatit, ja funktioiden paluuarvo annetaan 
+parametrina `line` funktiokutsuille.
+`line` funktiolla on neljä argumenttia: ensimmäiset kaksi ovat janan
+alkupisteen x- ja y-koordinaatit. Jälkimmäiset kaksi taas janan pääte 
+koordinatit. Joten aloitamme janat tietystä määrätystä pisteestä, ja
+päätämme ne sinne missä hiiren osoitin sattuu olemaan kun piirrosta 
+päivitetään.
 
 ```clojure
 (q/defsketch hello-lines
@@ -234,31 +227,31 @@ drawn.
 
   :features [:keep-on-top])
 ```
+Tämä on luonnoksemme. Voit asettaa ominaisuuksia kuten otsikko ja koko,
+sekä määrittää setup ja draw funktiot. Näiden täytyy täsmätä juuri 
+luomiemme funktioiden kanssa. Viimeinen rivi saa piirroksen ikkunan
+pysymään aina päällimmäisenä.
 
-This is our sketch. You can set attributes of the sketch such as the
-title and size. You also tell it what are the names of the setup and
-draw functions. These have to match exactly the function names we used
-above. The last line is to make our drawing app window keep on top
-of everything else.
+Klikkaa Run with REPL painiketta, ja sen jälkeen Reload File painiketta.
+Tämä evaluoi tiedoston, ja piirroksesi pitäisi ilmestyä näkyviin.
 
-Now click - Run with REPL - Reload File - which evaluates the file.
-Your drawing should appear.
+Jos näin ei käy, kokeile tallentaa tiedosto, painaa Stop painiketta, sitten 
+Run with REPL painiketta ja viimeiseksi Reload File painiketta.
 
 If not, try - Save file - Stop - Run with REPL - Reload File.
 
 
-### Exercise: Rainbow lines
+### Harjoitus: Sateenkaari viivat
 
-Update your drawing so that:
+Päivitä piirrostasi seuraavasti:
 
-* the lines are a different color
-* the title is different
-* the lines start at a different place
+* Muuta viivojen väriä
+* Muuta otsikkoa
+* Laita viivat alkamaan eri paikasta.
 
-Bonus: Make each of the four lines a different color.
+Bonus: Tee viivoista keskenään eri värisiä
+Bonus #2: Muuta viivojen väriä riippumaan hiiren osoittimen paikasta.
 
-Bonus #2: Change the color of the lines based on the mouse position.
+Vinkki: Voi katsoa [Quil:n dokumentaatiota](http://quil.info/api) saadaksesi vinkkejä ja ideoita.
 
-Hint: You can browse the [Quil API](http://quil.info/api) for ideas and function definitions.
-
-Hint: You may think this helpful: the [Quil Cheatsheet](https://github.com/ClojureBridge/curriculum/blob/gh-pages/outline/cheatsheet-quil.md) to see selected APIs for ClojureBridge curriculum.
+Vinkki: Tämä voi olla hyödyksi:  [Quil Cheatsheet](https://github.com/Flowa/curriculum/blob/gh-pages/outline/cheatsheet-quil.md). Täältä löydät lyhyen selityksen käytetyistä funktioista.
