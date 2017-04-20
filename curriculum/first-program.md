@@ -74,50 +74,48 @@ Anna tiedoston nimeksi `lines.clj`.
 
 ## Organisointi
 
-As your programs get more complex, you'll need to organize them. You
-organize your Clojure code by placing related functions and data in
-separate files. Clojure expects each file to correspond to a
-*namespace*, so you must *declare* a namespace at the top of each
-file.
+Ohjelmiesi muuttuessa monimutkaisemmiksi, ne tarvitsevat enemmän jäsennystä.
+Clojure koodi organisoidaan sijoittamalla toisiinsa liittyvät funktiot ja 
+data omiin tiedostoihinsa. Clojure olettaa, että jokainen tiedosto muodostaa
+*nimiavaruuden*, joten se täytyy *määrittää* jokaisen tiedoston alussa.
 
-Until now, you haven't really had to care about namespaces. Namespaces
-allow you to define new functions and data structures without worrying
-about whether the name you'd like is already taken. For example, you
-could create a function named `println` within the custom namespace
-`my-special-namespace`, and it would not interfere with Clojure's
-built-in `println` function. You can use the *fully-qualified name*
-`my-special-namespace/println` to distinguish your function from the
-built-in `println`.
+Tähän asti nimiavaruuksista ei ole juuri tarvinnut välittää. Nimiavaruudet
+mahdollistavat funktioiden nimeämisen ja määrittelyn ilman pelkoa siitä että
+ne törmäävät toisiinsa. Voit esimerkiksi määrittää funktion `println` omaan
+nimiavaruuteen nimeltä `my-special-namespace` ja se ei törmäisi Clojuren
+sisäänrakennettuun `println` funktioon. Voit käyttää *täydellistä nimeä*
+`my-special-namespace/println` erottaaksesi oman funktiosi sisäänrakennetusta 
+`println` funktiosta.
 
-Create a namespace in the file `src/drawing/lines.clj`. Open it, and
-type the following:
+Luo nimiavaruus tiedostoon `src/drawing/lines.clj`. Avaa se, ja kirjoita:
 
 ```clojure
 (ns drawing.lines)
 ```
 
-This line establishes that everything you define in this file will be
-stored within the `drawing.lines` namespace.
+Tämä rivi riittää siihen, että kaikki tähän tiedostoon määritetyt asiat löytyvät 
+jatkossa `drawing.lines` nimiavaruudesta.
 
-Before going forward, click Save on the top menu bar.
+Tallenna tiedosto painamalla Save painiketta ylä menusta.
 
+## Riippuvuudet
 
-## Dependencies
+Jäljellä on enää *riippuvuuksien* hallinta. Sitten olemme käyneet läpi tärkeimmät
+koodi-projektin osat. Riippuvuudet ovat muiden kirjoittamia koodi-kirjastoja joita
+voit käyttää hyväksesi omassa projektissasi.
 
-The final part of working with projects is managing their
-*dependencies*. Dependencies are just code libraries that others have
-written which you can incorporate in your own project.
+Lisätäksesi riippuvuuden, avaa `project.clj`. Etsi seuraava kohta:
 
-To add a dependency, open `project.clj`. You should see a section
-which reads
 
 ```clj
 :dependencies [[org.clojure/clojure "1.8.0"]
                [quil "2.4.0"]])
 ```
 
-This is where our dependencies are listed. All the dependencies we
-need for this project are already included.
+Projektisi riippuvuudet määritellään tässä. Kaikki tarvitsemamme kirjastot
+on jo lisätty riippuvuuksiksi.
+
+Jotta voimme käyttää näitä kirjastoja, meidän täytyy 
 
 In order to use these libraries, we have to _require_ them in our own
 project. In `src/drawing/lines.clj`, edit the ns statement you typed
