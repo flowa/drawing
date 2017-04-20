@@ -115,30 +115,23 @@ Lisätäksesi riippuvuuden, avaa `project.clj`. Etsi seuraava kohta:
 Projektisi riippuvuudet määritellään tässä. Kaikki tarvitsemamme kirjastot
 on jo lisätty riippuvuuksiksi.
 
-Jotta voimme käyttää näitä kirjastoja, meidän täytyy 
-
-In order to use these libraries, we have to _require_ them in our own
-project. In `src/drawing/lines.clj`, edit the ns statement you typed
-before:
+Jotta voimme käyttää näitä kirjastoja, meidän täytyy ladata ne _require_ määreellä.
+Tiedostossa `src/drawing/lines.clj` muuta aiemmin kirjoittamaasi ns-lauseketta seuraavasti:
 
 ```clojure
 (ns drawing.lines
    (:require [quil.core :as q]))
 ```
+Näin pääsemme käytämään tarvitsemaamme quil-kirjastoa.
 
-This gives us access to the library we will need to make our project.
+`:require` määre `ns`:n sisällä käskee Clojuren ladata muita nimiavaruuksia.
+`:as` osa määrettä luo *aliaksen* nimiavaruudelle, jotta voit viitata siihen
+ilman että sinun täytyy kirjoittaa koko nimiavaruuden nimeä. Esimerkiksi
+voit kirjoittaa `q/fill` sen sijaan että kirjoittaisit `quil.core/fill`.
 
-There are a couple of things going on here. First, the `:require` in
-`ns` tells Clojure to load other namespaces. The `:as` part of
-`:require` creates an *alias* for a namespace, letting you refer to
-its definitions without having to type out the entire namespace. For
-example, you can use `q/fill` instead of `quil.core/fill`.
+Muista jälleen tallentaa tiedosto painamalla Save-painiketta ylä menusta.
 
-Before going forward, don't forget to save the file.
-Click Save on the top menu bar when you change the code.
-
-
-## Your first real program
+## Ensimmäinen ohjelmasi
 
 ### Drawing with Quil
 
