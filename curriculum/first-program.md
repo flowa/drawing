@@ -2,11 +2,11 @@ Ensimmäinen Quil ohjelma
 ===================================
 
 Nyt tiedät hieman siitä, millaista Clojure ohjelmointi on. Katsotaanpa kuinka
-tehdään itsenäinen applikaatio.
+tehdään itsenäinen sovellus.
 
 Ensimmäiseksi on tehtävä *projekti*. Opit organisoimaan projektiasi
 *nimiavaruuksien* (namespace) avulla. Opit myös lisäämään projektiisi
-*riippuvuuksia*. Lopuksi opit *kääntämään* applikaatiosi.
+*riippuvuuksia*. Lopuksi opit *kääntämään* sovelluksesi.
 
 ## Luo projekti
 
@@ -58,7 +58,7 @@ Ensimmäinen vaihe voi kestää hetken. Kun näet kehotteen, `user=>`, alhaalla,
 
 Näet ikkunan jonka sisällä kimpoilee ympyrä.
 
-Voit sulkea ikkunen vasemmalla ylhäällä olevasta (X) painikkeesta.
+Voit sulkea ikkunan ylhäällä olevasta (X) painikkeesta.
 
 
 ## Muokkaa projektia
@@ -96,12 +96,12 @@ Luo nimiavaruus tiedostoon `src/drawing/lines.clj`. Avaa se, ja kirjoita:
 Tämä rivi riittää siihen, että kaikki tähän tiedostoon määritetyt asiat löytyvät 
 jatkossa `drawing.lines` nimiavaruudesta.
 
-Tallenna tiedosto painamalla Save painiketta ylä menusta.
+Tallenna tiedosto painamalla Save painiketta ylämenusta.
 
 ## Riippuvuudet
 
 Jäljellä on enää *riippuvuuksien* hallinta. Sitten olemme käyneet läpi tärkeimmät
-koodi-projektin osat. Riippuvuudet ovat muiden kirjoittamia koodi-kirjastoja joita
+koodi-projektin osat. Riippuvuudet ovat muiden kirjoittamia koodikirjastoja, joita
 voit käyttää hyväksesi omassa projektissasi.
 
 Lisätäksesi riippuvuuden, avaa `project.clj`. Etsi seuraava kohta:
@@ -237,9 +237,6 @@ Tämä evaluoi tiedoston, ja piirroksesi pitäisi ilmestyä näkyviin.
 
 Jos näin ei käy, kokeile tallentaa tiedosto, painaa Stop painiketta, sitten 
 Run with REPL painiketta ja viimeiseksi Reload File painiketta.
-
-If not, try - Save file - Stop - Run with REPL - Reload File.
-
 
 ### Harjoitus: Sateenkaari viivat
 
